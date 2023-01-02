@@ -14,7 +14,7 @@ import os
 
 load_dotenv()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("FLASK_SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 ckeditor = CKEditor(app)
 bootstrap = Bootstrap4(app)
 gravatar = Gravatar(
@@ -28,7 +28,7 @@ gravatar = Gravatar(
 )
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", 'sqlite:///blog.db')
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
