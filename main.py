@@ -81,9 +81,8 @@ class Comment(db.Model):
     parent_post = relationship("BlogPost", back_populates="comments")
 
 
-if not os.path.isfile("sqlite:///blog.db"):
-    with app.app_context():
-        db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 @login_manager.user_loader
