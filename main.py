@@ -9,10 +9,12 @@ from flask_gravatar import Gravatar
 from functools import wraps
 from datetime import date
 from forms import CreatePostForm, RegistrationForm, LoginForm, CommentForm
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get("FLASK_SECRET_KEY")
 ckeditor = CKEditor(app)
 bootstrap = Bootstrap4(app)
 gravatar = Gravatar(
